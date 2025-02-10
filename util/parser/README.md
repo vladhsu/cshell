@@ -37,42 +37,6 @@ To use the parser, you need to link the object files `parser.yy.o` and `parser.t
 * `UseParser.cpp` - example of using the parser in C++
 * `DisplayStructure.cpp` - reads multiple commands and displays the structure of the resulting tree
 
-### Tests
-
-More tests can be found in the `tests` directory:
-
-```console
-student@os:/.../minishell/util/parser$ cd tests
-
-student@os:/.../minishell/util/parser/tests$ ../DisplayStructure &>small_tests.out <small_tests.txt
-
-student@os:/.../minishell/util/parser/tests$ cat small_tests.out
-> mkdir tmp
-Command successfully read!
-command_t (
-    scmd (
-        simple_command_t (
-            verb (
-                'mkdir'
-            )
-            params (
-                'tmp'
-            )
-        )
-    )
-)
-
-> cd tmp
-Command successfully read!
-command_t (
-    scmd (
-
-...
-student@os:/.../minishell/util/parser/tests$ ../DisplayStructure &>ugly_tests.out <ugly_tests.txt
-
-student@os:/.../minishell/util/parser/tests$ ../DisplayStructure &>negative_tests.out <negative_tests.txt
-```
-
 #### Note
 
 The parser will fail with an error of unknown character if you use the Linux parser (which considers the end of line as `\n`) on Windows files (end of line as `\r\n`) because at the end of the lines (returned by `getline()`) there will be a `\r` followed by `\n`.
